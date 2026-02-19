@@ -36,10 +36,10 @@ class $modify(MyDeathTroll, PlayLayer) {
             soundToPlay = "metalpipe.mp3";
             FMODAudioEngine::sharedEngine()->playEffect("xpshutdown.mp3");
             
-            std::string msg = "Death #" + std::to_string(m_fields->m_sessionDeaths) + " - Seek help.";
+            std::string msg = "death #" + std::to_string(m_fields->m_sessionDeaths) + " - seek help.";
             Notification::create(msg, NotificationIcon::Error)->show();
             
-            utils::game::openURL("https://www.wikihow.com/Control-Anger");
+            utils::web::openLinkInBrowser("https://www.wikihow.com/Control-Anger");
         }
 
         if (!soundToPlay.empty()) {

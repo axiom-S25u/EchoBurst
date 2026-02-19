@@ -10,6 +10,7 @@
     "name": "EchoBurst",
     "version": "v1.0.0",
     "developer": "Axiom",
+	"tags": [ "joke", "utility", "offline" ],
     "description": "soundboard of hate.",
     "dependencies": {
         "geode.node-ids": ">=v1.20.0"
