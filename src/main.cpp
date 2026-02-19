@@ -1,0 +1,49 @@
+#include <Geode/Geode.hpp>
+#include <Geode/modify/PlayLayer.hpp>
+#include <ctime>
+
+using namespace geode::prelude;
+
+class $modify(MyDeathTroll, PlayLayer) {
+    struct Fields {
+        int m_sessionDeaths = 0;
+    };
+
+    void resetLevel() {
+        PlayLayer::resetLevel();
+        
+        m_fields->m_sessionDeaths++;
+        
+        float percent = this->getCurrentPercent();
+        std::string soundToPlay = "";
+        std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
+        if (percent <= 10.0f) {
+            int r = std::rand() % 3;
+            if (r == 0) soundToPlay = "bruh.mp3";
+            else if (r == 1) soundToPlay = "oof.mp3";
+            else soundToPlay = "disconnect.mp3";
+        } 
+        else if (percent > 10.0f && percent <= 70.0f) {
+            int r = std::rand() % 2;
+            if (r == 0) soundToPlay = "fart.mp3";
+            else soundToPlay = "wth.mp3";
+        }
+        else if (percent > 70.0f && percent <= 94.0f) {
+            soundToPlay = "violin.mp3";
+        }
+        else if (percent >= 95.0f) {
+            soundToPlay = "metalpipe.mp3";
+            FMODAudioEngine::sharedEngine()->playEffect("xpshutdown.mp3");
+            
+            std::string msg = "Death #" + std::to_string(m_fields->m_sessionDeaths) + " - Seek help.";
+            Notification::create(msg, NotificationIcon::Error)->show();
+            
+            utils::game::openURL("https://www.wikihow.com/Control-Anger");
+        }
+
+        if (!soundToPlay.empty()) {
+            FMODAudioEngine::sharedEngine()->playEffect(soundToPlay);
+        }
+    }
+};

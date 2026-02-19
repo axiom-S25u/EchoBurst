@@ -1,0 +1,29 @@
+{
+    "geode": "5.0.0-beta.3",
+    "gd": {
+        "win": "2.2081",
+        "android": "2.2081",
+        "mac": "2.2081",
+        "ios": "2.2081"
+    },
+    "id": "axiom.echoburst",
+    "name": "EchoBurst",
+    "version": "v1.0.0",
+    "developer": "Axiom",
+    "description": "soundboard of hate.",
+    "dependencies": {
+        "geode.node-ids": ">=v1.20.0"
+    },
+    "resources": {
+        "files": [
+            "bruh.mp3",
+            "disconnect.mp3",
+            "fart.mp3",
+            "metalpipe.mp3",
+            "oof.mp3",
+            "violin.mp3",
+            "wth.mp3",
+            "xpshutdown.mp3"
+        ]
+    }
+}
