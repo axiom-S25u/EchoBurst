@@ -14,17 +14,14 @@ jobs:
         config:
         - name: Windows
           os: windows-latest
-
         - name: macOS
           os: macos-latest
-
-        - name: Android32
+        - name: iOS
+          os: macos-latest
+          target: iOS
+        - name: Android
           os: ubuntu-latest
-          target: android32
-          
-        - name: Android64
-          os: ubuntu-latest
-          target: android64
+          target: Android
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -36,12 +33,12 @@ jobs:
       - name: Build Mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          bindings: geode-sdk/bindings
+          bindings-ref: main
           combine: true
           target: ${{ matrix.config.target }}
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: EchoBurst-${{ matrix.config.name }}
-          path: "*.geode"
+          name: ${{ matrix.config.name }}
+          path: build/*.geode

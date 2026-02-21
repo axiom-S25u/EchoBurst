@@ -8,7 +8,7 @@
     },
     "id": "axiom.echoburst",
     "name": "EchoBurst",
-    "version": "v1.0.1",
+    "version": "v1.0.2",
     "developer": "Axiom",
 	"tags": [ "joke", "utility", "offline" ],
     "description": "soundboard of hate.",
