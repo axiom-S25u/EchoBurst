@@ -1,6 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/PlayLayer.hpp>
-#include <ctime>
+#include <Geode/utils/random.hpp>
 
 using namespace geode::prelude;
 
@@ -16,16 +16,15 @@ class $modify(MyDeathTroll, PlayLayer) {
         
         float percent = this->getCurrentPercent();
         std::string soundToPlay = "";
-        std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
         if (percent <= 10.0f) {
-            int r = std::rand() % 3;
+            int r = utils::random::generate<int>(0, 3);
             if (r == 0) soundToPlay = "bruh.mp3";
             else if (r == 1) soundToPlay = "oof.mp3";
             else soundToPlay = "disconnect.mp3";
         } 
         else if (percent > 10.0f && percent <= 70.0f) {
-            int r = std::rand() % 2;
+            int r = utils::random::generate<int>(0, 2);
             if (r == 0) soundToPlay = "fart.mp3";
             else soundToPlay = "wth.mp3";
         }
@@ -47,3 +46,4 @@ class $modify(MyDeathTroll, PlayLayer) {
         }
     }
 };
+// meow meow meow meow meow meow meow meow
